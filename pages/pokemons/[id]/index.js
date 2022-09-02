@@ -74,13 +74,14 @@ export default function Pokemon() {
         return (
             <Accordion>
                 <Accordion.Header>Abilities:</Accordion.Header>
-                {pokeAbilitiesList.map(function (name, index) {
-                    return (
-                        <Accordion.Body key={index}>
+                <Accordion.Body key={index}>
+                    {pokeAbilitiesList.map(function (name, index) {
+                        return (
                             <li>{name}</li>
-                        </Accordion.Body>
-                    )
+                        )
+                    
                 })}
+                </Accordion.Body>
             </Accordion>
         );
     }
