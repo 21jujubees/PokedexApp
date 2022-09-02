@@ -40,7 +40,9 @@ export default function Pokemon() {
                     return pokedexEntries[i].flavor_text;
                 }
             }
-        }
+        } else return (
+            <p>No Pokedex entry found. Feel free to contribute to <a href="https://pokeapi.co/">PokeAPI</a>!</p>
+        )
     }
 
     function getPokeType(pokemon, index) {
@@ -61,10 +63,6 @@ export default function Pokemon() {
         );
     }
 
-    function getTypeColor(type) {
-
-    }
-
     function getAbilities(pokeAbilities) {
         const pokeAbilitiesList = [];
         for (let i = 0; i < pokeAbilities.length; i++) {
@@ -80,7 +78,7 @@ export default function Pokemon() {
                         return (
                             <li key={index}>{name}</li>
                         )
-                })}
+                    })}
                 </Accordion.Body>
             </Accordion>
         );
@@ -88,32 +86,34 @@ export default function Pokemon() {
 
     function pokemonPictures() {
         return (
-            <Carousel>
-                <Carousel.Item>
-                    <img
-                        className="d-block w-50 border border-2 shadow-sm p-3 mb-5 bg-body rounded-5"
-                        src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png`}
-                        alt="First slide"
-                        style={{ margin: "auto" }}
-                    />
-                </Carousel.Item>
-                <Carousel.Item>
-                    <img
-                        className="d-block w-50 border border-2 shadow-sm p-3 mb-5 bg-body rounded-5"
-                        src={`https://github.com/PokeAPI/sprites/raw/master/sprites/pokemon/versions/generation-v/black-white/animated/${id}.gif`}
-                        alt="Second slide"
-                        style={{ margin: "auto" }}
-                    />
-                </Carousel.Item>
-                <Carousel.Item>
-                    <img
-                        className="d-block w-50 border border-2 shadow-sm p-3 mb-5 bg-body rounded-5"
-                        src={`https://github.com/PokeAPI/sprites/raw/master/sprites/pokemon/versions/generation-v/black-white/animated/back/${id}.gif`}
-                        alt="Third slide"
-                        style={{ margin: "auto" }}
-                    />
-                </Carousel.Item>
-            </Carousel>
+            <div class="bg-secondary bg-opacity-10 rounded-5 border border-2 shadow-sm p-3 mb-5">
+                <Carousel>
+                    <Carousel.Item>
+                        <img
+                            className="d-block w-50"
+                            src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png`}
+                            alt="First slide"
+                            style={{ margin: "auto" }}
+                        />
+                    </Carousel.Item>
+                    <Carousel.Item>
+                        <img
+                            className="d-block w-50"
+                            src={`https://github.com/PokeAPI/sprites/raw/master/sprites/pokemon/versions/generation-v/black-white/animated/${id}.gif`}
+                            alt="Second slide"
+                            style={{ margin: "auto" }}
+                        />
+                    </Carousel.Item>
+                    <Carousel.Item>
+                        <img
+                            className="d-block w-50"
+                            src={`https://github.com/PokeAPI/sprites/raw/master/sprites/pokemon/versions/generation-v/black-white/animated/back/${id}.gif`}
+                            alt="Third slide"
+                            style={{ margin: "auto" }}
+                        />
+                    </Carousel.Item>
+                </Carousel>
+            </div>
         );
     }
 

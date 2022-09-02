@@ -2,7 +2,6 @@ import Head from 'next/head'
 import Image from 'next/image'
 import Link from 'next/link'
 import styles from '../styles/Home.module.css'
-//import './App.css';
 import { useState, useEffect } from "react";
 
 function getIDFromPokemon(pokemon) {
@@ -45,7 +44,7 @@ function RandomPokemon() {
   return (
     <div className="p-3">
       <Link href={{ pathname: "pokemons/[id]", query: { id: randomId } }}>
-        <button className="btn btn-primary">Random Pokemon</button>
+        <button className="btn btn-primary shadow-sm">Random Pokemon</button>
       </Link>
     </div>
   )
@@ -82,7 +81,7 @@ function App() {
     <div className="App">
       <div className="container">
         <RandomPokemon />
-        <div className="row">
+        <div className="row justify-content-center">
           {pokemonList.map(pokemon => {
             const id = getIDFromPokemon(pokemon);
             return <Card
@@ -95,11 +94,11 @@ function App() {
             />
           })}
         </div>
-        <div className="row text-center">
+        <div className="row justify-content-center text-center p-4">
           {isLoading == true ? <div className="spinner-border" role="status">
             <span className="visually-hidden">Loading...</span>
           </div> : null}
-          <div className="p-3">
+          <div>
             <button
               className="btn btn-primary"
               onClick={() => { setOffset(offset + limit) }}
