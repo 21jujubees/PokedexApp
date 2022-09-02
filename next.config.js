@@ -12,6 +12,6 @@ module.exports = {
       process.env.NEXT_PUBLIC_API_URL
   },
   images: {
-    domains: ['https://raw.githubusercontent.com/PokeAPI/'],
+    domains: ['https://raw.githubusercontent.com/'],
   }
 }
