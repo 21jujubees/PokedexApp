@@ -13,7 +13,7 @@ function getPokedexEntry(pokeSpecies) {
                 return pokedexEntries[i].flavor_text;
             }
         }
-    } else return (
+    } return (
         <p>No Pokedex entry found. Feel free to contribute to <a href="https://pokeapi.co/">PokeAPI</a>!</p>
     )
 }
@@ -28,7 +28,7 @@ function getPokeType(pokemon, index) {
                 <img
                     src={`/icons/${pokeType}.svg`}
                     alt={`${TitleCase(pokeType)}`}
-                    style={{ height: "40px", width: "40px" }}
+                    style={{ height: "30px", width: "30px" }}
                     padding="15px"
                 />
             </span>
@@ -36,8 +36,33 @@ function getPokeType(pokemon, index) {
     );
 }
 
+function getMoveList(pokeMoves) {
+    const pokeMovesList = [];
+    pokeMovesList.push(pokeMoves[0].move.name);
+
+    for (let i = 0; i < pokeMoves.length; i++) {
+        pokeMovesList.push(pokeMoves[i].move.name);
+        console.log(pokeMovesList[i]);
+        pokeMovesList[i] = TitleCase(pokeMovesList[i]);
+    }
+
+    return (
+        <Accordion >
+            <Accordion.Header>Learnable Moves:</Accordion.Header>
+            <Accordion.Body key="moveList">
+                {pokeMovesList.map(function (name, index) {
+                    return (
+                        <li key={index}>{name}</li>
+                    )
+                })}
+            </Accordion.Body>
+        </Accordion>
+    );
+}
+
 function getAbilities(pokeAbilities) {
     const pokeAbilitiesList = [];
+
     for (let i = 0; i < pokeAbilities.length; i++) {
         pokeAbilitiesList.push(pokeAbilities[i].ability.name);
         pokeAbilitiesList[i] = TitleCase(pokeAbilitiesList[i]);
@@ -46,7 +71,7 @@ function getAbilities(pokeAbilities) {
     return (
         <Accordion>
             <Accordion.Header>Abilities:</Accordion.Header>
-            <Accordion.Body key="5">
+            <Accordion.Body key="abilityList">
                 {pokeAbilitiesList.map(function (name, index) {
                     return (
                         <li key={index}>{name}</li>
@@ -59,8 +84,8 @@ function getAbilities(pokeAbilities) {
 
 function PokemonPictures(id) {
     return (
-        <div class="bg-secondary bg-opacity-10 rounded-5 border border-2 shadow-sm p-3 mb-5">
-            <Carousel>
+        <div className="bg-secondary bg-opacity-10 rounded-5 border border-2 shadow-sm p-3 mb-5">
+            <Carousel variant="dark">
                 <Carousel.Item>
                     <img
                         className="d-block w-50"
@@ -149,7 +174,10 @@ export default function Pokemon() {
                         <p>{getPokedexEntry(pokeSpecies)}</p>
                         {PokemonPhysical(pokemon)}
                         <hr></hr>
+                        <div className="row">
                         <div className="col-4">{getAbilities(pokemon.abilities)}</div>
+                        <div className="col-4">{getMoveList(pokemon.moves)}</div>
+                        </div>
                         <br></br>
                         <Link href="/">
                             <a className="btn btn-primary">
