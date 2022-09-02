@@ -1,6 +1,7 @@
 import { useRouter } from 'next/router';
 import { useState, useEffect } from 'react';
 import Link from "next/link";
+import Image from "next/link";
 import { TitleCase, PadNum } from '../../index.js';
 import { Carousel, OverlayTrigger, Tooltip, Accordion } from 'react-bootstrap';
 
@@ -49,7 +50,7 @@ export default function Pokemon() {
                 placement="top"
                 overlay={<Tooltip id="button-tooltip-2">{`${TitleCase(pokeType)}`}</Tooltip>}>
                 <span>
-                    <img
+                    <Image
                         src={`/icons/${pokeType}.svg`}
                         alt={`${TitleCase(pokeType)}`}
                         style={{ height: "40px", width: "40px" }}
@@ -79,7 +80,6 @@ export default function Pokemon() {
                         return (
                             <li>{name}</li>
                         )
-                    
                 })}
                 </Accordion.Body>
             </Accordion>
@@ -90,7 +90,7 @@ export default function Pokemon() {
         return (
             <Carousel>
                 <Carousel.Item>
-                    <img
+                    <Image
                         className="d-block w-50 border border-2 shadow-sm p-3 mb-5 bg-body rounded-5"
                         src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png`}
                         alt="First slide"
@@ -98,7 +98,7 @@ export default function Pokemon() {
                     />
                 </Carousel.Item>
                 <Carousel.Item>
-                    <img
+                    <Image
                         className="d-block w-50 border border-2 shadow-sm p-3 mb-5 bg-body rounded-5"
                         src={`https://github.com/PokeAPI/sprites/raw/master/sprites/pokemon/versions/generation-v/black-white/animated/${id}.gif`}
                         alt="Second slide"
@@ -106,7 +106,7 @@ export default function Pokemon() {
                     />
                 </Carousel.Item>
                 <Carousel.Item>
-                    <img
+                    <Image
                         className="d-block w-50 border border-2 shadow-sm p-3 mb-5 bg-body rounded-5"
                         src={`https://github.com/PokeAPI/sprites/raw/master/sprites/pokemon/versions/generation-v/black-white/animated/back/${id}.gif`}
                         alt="Third slide"
