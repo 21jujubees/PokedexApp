@@ -43,9 +43,11 @@ function Card(props) {
 function RandomPokemon() {
   const randomId = Math.floor(Math.random() * (905 - 1)) + 1;
   return (
-    <Link href={{ pathname: "pokemons/[id]", query: { id: randomId } }}>
-      <button className="btn btn-primary">Random Pokemon</button>
-    </Link>
+    <div className="p-3">
+      <Link href={{ pathname: "pokemons/[id]", query: { id: randomId } }}>
+        <button className="btn btn-primary">Random Pokemon</button>
+      </Link>
+    </div>
   )
 }
 
@@ -97,7 +99,7 @@ function App() {
           {isLoading == true ? <div className="spinner-border" role="status">
             <span className="visually-hidden">Loading...</span>
           </div> : null}
-          <div>
+          <div className="p-3">
             <button
               className="btn btn-primary"
               onClick={() => { setOffset(offset + limit) }}
