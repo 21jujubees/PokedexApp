@@ -81,6 +81,25 @@ function getAbilities(pokeAbilities) {
     );
 }
 
+function PokemonCry(id) {
+    let audio = new Audio(`/cries/${id}.ogg`);
+
+    const start = (() => {
+        audio.play();
+    });
+
+    return (
+        <button>
+            <img
+                src="../icons/speaker.svg"
+                alt="Play"
+                style={{ height: "30px", width: "30px" }}
+                onClick={start}
+            />
+        </button>
+    );
+}
+
 function PokemonPictures(id) {
     return (
         <div className="bg-secondary bg-opacity-10 rounded-5 border border-2 shadow-sm p-3 mb-5">
@@ -129,6 +148,37 @@ function PokemonPhysical(pokemon) {
     )
 }
 
+function NavPage(id) {
+    let prevId = Number(id) - 1;
+    let nextId = Number(id) + 1;
+
+    if (prevId < 1) {
+        prevId = 905;
+    }
+
+    if (nextId > 905) {
+        nextId = 1;
+    }
+
+    const prevUrl = "./" + prevId;
+    const nextUrl = "./" + nextId;
+
+    return (
+        <div className="row p-3">
+            <div className="col-2">
+                <a href={prevUrl} className="btn btn-primary">
+                    Prev
+                </a>
+            </div>
+            <div className="col-2">
+                <a href={nextUrl} className="btn btn-primary">
+                    Next
+                </a>
+            </div>
+        </div>
+    )
+}
+
 export default function Pokemon() {
     const [pokemon, setPokemon] = useState(null);
     const [pokeSpecies, setSpecies] = useState(null);
@@ -158,7 +208,15 @@ export default function Pokemon() {
 
     return (
         <div className="container">
-            <div className="row">&nbsp;</div>
+            <div className="row p-3">
+                <div className="col-2">
+                    <Link href="/">
+                        <a className="btn btn-primary">
+                            Back
+                        </a>
+                    </Link>
+                </div>
+            </div>
             {isLoading == true ? <div className="spinner-border" role="status">
                 <span className="visually-hidden">Loading...</span>
             </div> : null}
@@ -169,20 +227,16 @@ export default function Pokemon() {
                     </div>
                     <div className="col align-self-center">
                         <p>No. {PadNum(id)}</p>
-                        <h4>{TitleCase(pokemon.name)} {getPokeType(pokemon, 0)} {pokemon.types[1] ? getPokeType(pokemon, 1) : null}</h4>
+                        <h4>{TitleCase(pokemon.name)} {getPokeType(pokemon, 0)} {pokemon.types[1] ? getPokeType(pokemon, 1) : null} {PokemonCry(id)}</h4>
                         <p>{getPokedexEntry(pokeSpecies)}</p>
                         {PokemonPhysical(pokemon)}
                         <hr></hr>
                         <div className="row">
-                        <div className="col-4">{getAbilities(pokemon.abilities)}</div>
-                        <div className="col-4">{getMoveList(pokemon.moves)}</div>
+                            <div className="col-4">{getAbilities(pokemon.abilities)}</div>
+                            <div className="col-4">{getMoveList(pokemon.moves)}</div>
                         </div>
                         <br></br>
-                        <Link href="/">
-                            <a className="btn btn-primary">
-                                Back
-                            </a>
-                        </Link>
+                        {NavPage(id)}
                     </div>
                 </div>
             ) : null}
