@@ -32,7 +32,7 @@ function Card(props) {
       <div className="card-body">
         <p className="card-text">{props.pokeNum}</p>
         <Link href={{ pathname: "pokemons/[id]", query: { id: props.id } }}>
-          <a class="stretched-link"><h5 className="card-title">{props.title}</h5></a>
+          <a className="stretched-link"><h5 className="card-title">{props.title}</h5></a>
         </Link>
         <p className="card-text">{props.text}</p>
       </div>

@@ -131,18 +131,18 @@ export default function Pokemon() {
                         <p>No. {PadNum(id)}</p>
                         <h4>{TitleCase(pokemon.name)} {getPokeType(pokemon, 0)} {pokemon.types[1] ? getPokeType(pokemon, 1) : null}</h4>
                         <p>{getPokedexEntry(pokeSpecies)}</p>
-                        <ul class="d-flex list-inline justify-content-evenly">
-                            <li class="list-inline-item"><b>HP</b></li>
-                            <li class="list-inline-item">{pokemon.stats[0].base_stat}</li>
-                            <li class="list-inline-item"></li>
-                            <li class="list-inline-item"><b>Height</b></li>
-                            <li class="list-inline-item">{pokemon.height / 10} m</li>
-                            <li class="list-inline-item"></li>
-                            <li class="list-inline-item"><b>Weight</b></li>
-                            <li class="list-inline-item">{pokemon.weight / 10} kg</li>
+                        <ul className="d-flex list-inline justify-content-evenly">
+                            <li className="list-inline-item"><b>HP</b></li>
+                            <li className="list-inline-item">{pokemon.stats[0].base_stat}</li>
+                            <li className="list-inline-item"></li>
+                            <li className="list-inline-item"><b>Height</b></li>
+                            <li className="list-inline-item">{pokemon.height / 10} m</li>
+                            <li className="list-inline-item"></li>
+                            <li className="list-inline-item"><b>Weight</b></li>
+                            <li className="list-inline-item">{pokemon.weight / 10} kg</li>
                         </ul>
                         <hr></hr>
-                        <div class="col-4">{getAbilities(pokemon.abilities)}</div>
+                        <div className="col-4">{getAbilities(pokemon.abilities)}</div>
                         <br></br>
                         <Link href="/">
                             <a className="btn btn-primary">
