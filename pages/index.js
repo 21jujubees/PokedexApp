@@ -28,7 +28,7 @@ function Card(props) {
       className="card col-4 d-flex justify-content-center"
       style={{ "width": "18rem" }}
     >
-      <img src={props.src} className="card-img-top" alt="..." />
+      <Image src={props.src} className="card-img-top" alt="..." />
       <div className="card-body">
         <p className="card-text">{props.pokeNum}</p>
         <Link href={{ pathname: "pokemons/[id]", query: { id: props.id } }}>

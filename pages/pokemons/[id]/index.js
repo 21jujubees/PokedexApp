@@ -78,7 +78,7 @@ export default function Pokemon() {
                 <Accordion.Body key={index}>
                     {pokeAbilitiesList.map(function (name, index) {
                         return (
-                            <li>{name}</li>
+                            <li key={index}>{name}</li>
                         )
                 })}
                 </Accordion.Body>
