@@ -38,7 +38,6 @@ function getPokeType(pokemon, index) {
 
 function getMoveList(pokeMoves) {
     const pokeMovesList = [];
-    pokeMovesList.push(pokeMoves[0].move.name);
 
     for (let i = 0; i < pokeMoves.length; i++) {
         pokeMovesList.push(pokeMoves[i].move.name);
