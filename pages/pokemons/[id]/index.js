@@ -222,10 +222,10 @@ export default function Pokemon() {
             </div> : null}
             {pokemon ? (
                 <div className="row">
-                    <div className="col align-self-center">
+                    <div className="col-md-6 align-self-center">
                         {PokemonPictures(id)}
                     </div>
-                    <div className="col align-self-center">
+                    <div className="col-md-6 align-self-center">
                         <p>No. {PadNum(id)}</p>
                         <h4>{TitleCase(pokemon.name)} {getPokeType(pokemon, 0)} {pokemon.types[1] ? getPokeType(pokemon, 1) : null} {PokemonCry(id)}</h4>
                         <p>{getPokedexEntry(pokeSpecies)}</p>
