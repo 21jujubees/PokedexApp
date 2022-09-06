@@ -42,7 +42,7 @@ function Card(props) {
 function RandomPokemon() {
   const randomId = Math.floor(Math.random() * (905 - 1)) + 1;
   return (
-    <div className="p-3">
+    <div className="col-2">
       <Link href={{ pathname: "pokemons/[id]", query: { id: randomId } }}>
         <button className="btn btn-primary shadow-sm">Random Pokemon</button>
       </Link>
@@ -63,6 +63,8 @@ function App() {
   const [pokemonList, setPokemonList] = useState([]);
   const [offset, setOffset] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
+  const [searchTerm, setSearchTerm] = useState('');
+
   let limit = 20;
 
   useEffect(() => {
@@ -80,19 +82,37 @@ function App() {
   return (
     <div className="App">
       <div className="container">
-        <RandomPokemon />
-        <div className="row justify-content-center">
-          {pokemonList.map(pokemon => {
-            const id = getIDFromPokemon(pokemon);
-            return <Card
-              key={id}
-              id={id}
-              pokeNum={"#" + PadNum(id)}
-              title={TitleCase(pokemon["name"])}
-              text=""
-              src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png`}
+        <div className="row d-flex justify-content-around p-3">
+          <RandomPokemon />
+          <div className="col-2">
+            <input
+              type="text"
+              placeholder="Filter..."
+              onChange={(event) => {
+                setSearchTerm(event.target.value);
+              }}
             />
-          })}
+          </div>
+        </div>
+        <div className="row justify-content-center">
+          {pokemonList.filter((pokemon) => {
+            if (searchTerm == "") {
+              return pokemon;
+            } else if (pokemon["name"].includes(searchTerm.toLowerCase())) {
+              return pokemon;
+            }
+          }).
+            map(pokemon => {
+              const id = getIDFromPokemon(pokemon);
+              return <Card
+                key={id}
+                id={id}
+                pokeNum={"#" + PadNum(id)}
+                title={TitleCase(pokemon["name"])}
+                text=""
+                src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${id}.png`}
+              />
+            })}
         </div>
         <div className="row justify-content-center text-center p-4">
           {isLoading == true ? <div className="spinner-border" role="status">
