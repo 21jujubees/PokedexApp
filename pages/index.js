@@ -42,7 +42,7 @@ function Card(props) {
 function RandomPokemon() {
   const randomId = Math.floor(Math.random() * (905 - 1)) + 1;
   return (
-    <div className="col-2">
+    <div className="col-md-2 p-1">
       <Link href={{ pathname: "pokemons/[id]", query: { id: randomId } }}>
         <button className="btn btn-primary shadow-sm">Random Pokemon</button>
       </Link>
@@ -82,9 +82,9 @@ function App() {
   return (
     <div className="App">
       <div className="container">
-        <div className="row d-flex justify-content-around p-3">
+        <div className="row d-flex justify-content-around p-3 text-center">
           <RandomPokemon />
-          <div className="col-2">
+          <div className="col-md-2 p-1">
             <input
               type="text"
               placeholder="Filter..."
